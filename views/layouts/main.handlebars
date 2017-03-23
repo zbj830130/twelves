@@ -3,46 +3,77 @@
 
 <head>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner red-border-bottom">
-            <div class="container">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <nav class="navbar navbar-default navbar-fixed-top red-border-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                <a class="brand" href="#">CH Zodiacs</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">T-Shirts</a></li>
-                        <li><a href="#contact">Accessories</a></li>
-                    </ul>
-                    <ul class="nav nav-pills pull-right">
-                        <li>
-                            <a class="btn btn-small" href="#">Login</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-small" href="#about">Signup</a>
-                        </li>
-                        <li>
-                            <a class="" href="#">
-                                <i class="icon-shopping-cart"></i>(0)
-                            </a>
-                        </li>
-                    </ul>
+                <a class="navbar-brand" href="#">CH Zodiacs</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">T-Shirts</a></li>
+                    <li><a href="#contact">Accessories</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="btn btn-small" href="#">Login</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-small" href="#about">Signup</a>
+                    </li>
+                    <li>
+                        <a class="" href="#">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>(0)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div id="wrap">
+        {{{body}}}
+        <div id="push"></div>
+    </div>
+    <div id="footer" class="red-border-top">
+        <div class="container">
+            <div class="row div-width-80">
+                <div class="col-md-4">
+                    <h3>Shipping Free</h3>
+                    <p>Buy more then 99 NZD products, then the shipping is free.</p>
                 </div>
-
-
-                <!--/.nav-collapse -->
+                <div class="col-md-4">
+                    <h3>Fefund Policy</h3>
+                    <p>7 days unconditional return, except for underwears</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Cash on delivery</h3>
+                    <p>You do not need to pay online, you can pay us when you receive the products</p>
+                </div>
+            </div>
+            <div class="div-width-80 footer-links">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">T-Shirts</a></li>
+                    <li><a href="#contact">Accessories</a></li>
+                </ul>
             </div>
         </div>
+
     </div>
-    {{{body}}}
 </body>
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 </html>
