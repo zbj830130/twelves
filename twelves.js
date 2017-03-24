@@ -35,7 +35,6 @@ app.get('/', function (request, response) {
         response.render('pages/index', {
             products: docs
         });
-        dHelper.closeConnection(db);
     });
 });
 
