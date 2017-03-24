@@ -23,13 +23,18 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function (request, response) {
-    var db = dHelper.openConnection();
-        Product.find({}, function (err, docs) {
-            response.render('pages/index', {
-                products: docs
-            });
-            dHelper.closeConnection(db);
-        });
+
+    response.render('pages/index', {
+
+    });
+
+    //    var db = dHelper.openConnection();
+    //        Product.find({}, function (err, docs) {
+    //            response.render('pages/index', {
+    //                products: docs
+    //            });
+    //            dHelper.closeConnection(db);
+    //        });
 
 });
 
