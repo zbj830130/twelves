@@ -1,7 +1,4 @@
-var mongoose = require('mongoose');  
-mongoose.Promise = global.Promise;
-
-exports.openConnection = function () {
+exports.openConnection = function (mongoose) {
     try {
         db = mongoose.connect('mongodb://root:mike1234@ds141490.mlab.com:41490/heroku_5c9zcgst'); //- starting a db connection
     } catch (err) {

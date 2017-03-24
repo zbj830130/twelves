@@ -1,5 +1,7 @@
 var express = require('express');
-//var dHelper = require('./dao/daohelper.js'); 
+var mongoose = require('mongoose');  
+mongoose.Promise = global.Promise;
+var dHelper = require('./dao/daohelper.js'); 
 var Product = require('./models/product.js');
 var app = express();
 var handlebars = require('express3-handlebars')
