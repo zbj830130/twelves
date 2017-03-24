@@ -25,25 +25,18 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 try {
-    mongoose.connect('mongodb://root:mike1234@ds141490.mlab.com:41490/heroku_5c9zcgst'); //- starting a db connection
+    mongoose.connect('mongodb://root:mike123@ds141490.mlab.com:41490/chzodiacs'); //- starting a db connection
 } catch (err) {
-    mongoose.createConnection('mongodb://root:mike1234@ds141490.mlab.com:41490/heroku_5c9zcgst'); //- starting another db connection
+    mongoose.createConnection('mongodb://root:mike123@ds141490.mlab.com:41490/chzodiacs'); //- starting another db connection
 }
 
 app.get('/', function (request, response) {
-
-    response.render('pages/index', {
-
+    Product.find({}, function (err, docs) {
+        response.render('pages/index', {
+            products: docs
+        });
+        dHelper.closeConnection(db);
     });
-
-    //    var db = dHelper.openConnection();
-    //        Product.find({}, function (err, docs) {
-    //            response.render('pages/index', {
-    //                products: docs
-    //            });
-    //            dHelper.closeConnection(db);
-    //        });
-
 });
 
 app.get('/cool', function (request, response) {
