@@ -1,4 +1,5 @@
 var express = require('express');
+var products = require('./lib/products.js');
 var app = express();
 var handlebars = require('express3-handlebars')
     .create({
@@ -13,7 +14,6 @@ var handlebars = require('express3-handlebars')
     });
 
 app.set('port', (process.env.PORT || 5000));
-
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
@@ -22,7 +22,9 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function (request, response) {
-    response.render('pages/index')
+    response.render('pages/index', {
+        test: products.getProducts()
+    });
 });
 
 app.get('/cool', function (request, response) {

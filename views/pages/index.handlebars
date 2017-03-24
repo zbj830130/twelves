@@ -1,6 +1,5 @@
 {{#section 'csslink'}}
-    <link href="/css/index.css" rel="stylesheet">
-{{/section}}
+<link href="/css/index.css" rel="stylesheet"> {{/section}}
 
 
 <div id="myCarousel" class="carousel slide">
@@ -29,4 +28,12 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+<div class="container">
+    <div class="row div-width-95">
+        {{#each test.products}} 
+            {{> products this}}
+        {{/each}}
+    </div>
+    
 </div>

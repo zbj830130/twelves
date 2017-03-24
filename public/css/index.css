@@ -20,7 +20,8 @@
 .carousel-caption {
     font-size: 2vw;
     color: #e60000;
-/*    text-shadow: 0 0 1px #e60000;*/
+    margin-top: 3vw;
+    /*    text-shadow: 0 0 1px #e60000;*/
 }
 
 .carousel-control.left,
@@ -32,3 +33,16 @@
 .glyphicon.glyphicon-chevron-right {
     color: black;
 }
+
+.col-md-4 img {
+    width: 270px;
+    height: auto;
+}
+
+.productItem {
+    border: 1px solid #b3b3b3;
+    text-align: center;
+    margin-bottom: 3vw;
+}
+
+.productItem span {}
