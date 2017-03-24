@@ -1,6 +1,6 @@
 var express = require('express');
-var dHelper = require('/dao/daohelper.js'); 
-//var Product = require('./models/product.js');
+//var dHelper = require('./dao/daohelper.js'); 
+var Product = require('./models/product.js');
 var app = express();
 var handlebars = require('express3-handlebars')
     .create({
