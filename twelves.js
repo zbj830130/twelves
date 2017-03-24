@@ -1,7 +1,7 @@
 var express = require('express');
-var mongoose = require('mongoose');  
+var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var dHelper = require('./mongoose_dao/daohelper.js'); 
+
 var Product = require('./models/product.js');
 var app = express();
 var handlebars = require('express3-handlebars')
@@ -23,6 +23,12 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
+
+try {
+    mongoose.connect('mongodb://root:mike1234@ds141490.mlab.com:41490/heroku_5c9zcgst'); //- starting a db connection
+} catch (err) {
+    mongoose.createConnection('mongodb://root:mike1234@ds141490.mlab.com:41490/heroku_5c9zcgst'); //- starting another db connection
+}
 
 app.get('/', function (request, response) {
 
