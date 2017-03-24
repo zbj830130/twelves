@@ -41,6 +41,7 @@
 
 .productItem {
     border: 1px solid #b3b3b3;
+    border-radius: 3px;
     text-align: center;
     margin-bottom: 3vw;
 }

@@ -1,5 +1,6 @@
 var express = require('express');
-var products = require('./lib/products.js');
+var dHelper = require('./dao/daohelper.js');
+var Product = require('./models/product.js');
 var app = express();
 var handlebars = require('express3-handlebars')
     .create({
@@ -22,9 +23,14 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function (request, response) {
-    response.render('pages/index', {
-        test: products.getProducts()
-    });
+    var db = dHelper.openConnection();
+        Product.find({}, function (err, docs) {
+            response.render('pages/index', {
+                products: docs
+            });
+            dHelper.closeConnection(db);
+        });
+
 });
 
 app.get('/cool', function (request, response) {
