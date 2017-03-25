@@ -1,20 +1,29 @@
 {{#section 'csslink'}}
 <link href="/css/detail.css" rel="stylesheet">
 <link href="/css/bootstrap-select.min.css" rel="stylesheet">{{/section}}
-<div class="contain">
+
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="#">2013</a></li>
+    <li class="active">十一月</li>
+</ol>
+<div class="contain-fluid">
+    {{#each product}}
     <div class="div-width-95 big-pic">
-        <img src="img/product_dog.png">
+        <img src="{{picUrl}}">
     </div>
     <div class="product-header div-width-80">
-        {{#each product}}
-        <h3>{{name}}</h3>
+
+        <h3 id="productName">{{name}}</h3>
         <h4>{{Color}}</h4>
-        <span>${{price}}</span> {{/each}}
+        <span>${{price}}</span>
     </div>
+    <input type="hidden" id="picUrl" value="{{picUrl}}" />
+    <input type="hidden" id="category" value="{{category}}" /> {{/each}}
     <div class="div-width-80 opertaions">
         <div class="size">
             <label>Size:</label>
-            <select class="form-control">
+            <select id="sizeSelcted" class="form-control">
                 {{#each productDetails}}
                 <option value="{{SKU}}" data="{{price}}">{{size}}</option>
                 {{/each}}
@@ -25,14 +34,17 @@
             <label id="minusQty" class="btn">
             <i class="fa fa-minus-square fa-2x" aria-hidden="true"></i>
         </label>
-            <label id="qty">0</label>
+            <label id="qty">1</label>
             <label id="plusQty" class="btn">
             <i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
         </label>
         </div>
         <div id="addtoCart">
-            <button class="btn btn-danger">Add to Cart</button>
+            <button id="addtoCartBut" class="btn btn-danger">Add to Cart</button>
         </div>
     </div>
 </div>
-{{#section 'javascript'}} {{/section}}
+{{#section 'javascript'}}
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/detail.js"></script>
+{{/section}}

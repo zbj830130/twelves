@@ -42,6 +42,20 @@ app.get('/', function (request, response) {
     });
 });
 
+app.get('/productList', function (request, response) {
+    var category = request.query.category;
+    var title = request.query.title;
+    Product.find({
+        'category': category
+    }, function (err, docs) {
+        response.render('pages/productList', {
+            products: docs,
+            title: title,
+            layout: false
+        });
+    });
+});
+
 app.get('/detail', function (request, response) {
     var spu = request.query.SPU;
     Product.find({
