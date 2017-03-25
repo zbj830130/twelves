@@ -39,23 +39,24 @@ app.get('/', function (request, response) {
         response.render('pages/index', {
             products: docs
         });
-        db.connection.close();
     });
 });
 
 app.get('/detail', function (request, response) {
     var spu = request.query.SPU;
     Product.find({
-            SPU: 'T00001'
+            'SPU': spu
         },
         function (err, productInfo) {
-            response.render('pages/detail', {
-                product: productInfo
-            })
-        }
-    );
-    db.connection.close();
-
+            ProductDetail.find({
+                'SPU': spu
+            }, function (err, productDetail) {
+                response.render('pages/detail', {
+                    product: productInfo,
+                    productDetails: productDetail
+                })
+            });
+        });
 });
 
 app.get('/cool', function (request, response) {
