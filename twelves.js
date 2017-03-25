@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 var Product = require('./models/product.js');
+var ProductDetail = require('./models/productDetail.js');
+
 var app = express();
 var handlebars = require('express3-handlebars')
     .create({
@@ -24,10 +26,12 @@ app.set('views', __dirname + '/views');
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+var db;
+
 try {
-    mongoose.connect('mongodb://root:mike123@ds141490.mlab.com:41490/chzodiacs'); //- starting a db connection
+    db = mongoose.connect('mongodb://root:mike123@ds141490.mlab.com:41490/chzodiacs'); //- starting a db connection
 } catch (err) {
-    mongoose.createConnection('mongodb://root:mike123@ds141490.mlab.com:41490/chzodiacs'); //- starting another db connection
+    db = mongoose.createConnection('mongodb://root:mike123@ds141490.mlab.com:41490/chzodiacs'); //- starting another db connection
 }
 
 app.get('/', function (request, response) {
@@ -35,7 +39,23 @@ app.get('/', function (request, response) {
         response.render('pages/index', {
             products: docs
         });
+        db.connection.close();
     });
+});
+
+app.get('/detail', function (request, response) {
+    var spu = request.query.SPU;
+    Product.find({
+            SPU: 'T00001'
+        },
+        function (err, productInfo) {
+            response.render('pages/detail', {
+                product: productInfo
+            })
+        }
+    );
+    db.connection.close();
+
 });
 
 app.get('/cool', function (request, response) {
