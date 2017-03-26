@@ -5,7 +5,8 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet"> {{{_sections.csslink}}}
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/shoppingCart.css" rel="stylesheet">{{{_sections.csslink}}}
 </head>
 
 <body>
@@ -22,9 +23,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul id="leftNavbar" class="nav navbar-nav">
-                    <li class="active"><a href="/#myCarousel">Home</a></li>
-                    <li><a href="/#category1">T-Shirts</a></li>
-                    <li><a href="/#category2">Puzzles</a></li>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/channel?category=1">T-Shirts</a></li>
+                    <li><a href="/channel?category=2">Puzzles</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -34,14 +35,29 @@
                         <a class="btn btn-small" href="#about">Signup</a>
                     </li>
                     <li>
-                        <a class="" href="#">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>(0)
+                        <a id="miniCartBtn" class="btn btn-small" href="#" data-toggle="modal" data-target="#miniCartDiv">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>(<span id="miniCartAmount">0</span>)
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="modal fade" id="miniCartDiv" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10000;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bottom-no-border">
+                    <a class="deleItem close" data-dismiss="modal" herf="javascript:vodi(0);"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>
+                </div>
+                <div id="miniCartDivBody" class="modal-body">
+                </div>
+                <div class="modal-footer top-no-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Confirm Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="wrap">
         {{{body}}}
         <div id="push"></div>
@@ -128,7 +144,10 @@
 </body>
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/webSetting.js"></script>
 <script src="/js/main.js"></script>
+<script src="/js/shoppingCart.js"></script>
+<script src="/js/jquery.cookie.js"></script>
 {{{_sections.javascript}}}
 
 </html>

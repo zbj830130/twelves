@@ -20,6 +20,7 @@ var handlebars = require('express3-handlebars')
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
+app.use(require('cookie-parser')('key'));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -51,7 +52,22 @@ app.get('/productList', function (request, response) {
         response.render('pages/productList', {
             products: docs,
             title: title,
+            category: category,
             layout: false
+        });
+    }).limit(6);
+});
+
+app.get('/channel', function (request, response) {
+    var category = request.query.category;
+    var title = request.query.title;
+    Product.find({
+        'category': category
+    }, function (err, docs) {
+        response.render('pages/channel', {
+            products: docs,
+            title: title,
+            category: category
         });
     });
 });
@@ -68,9 +84,33 @@ app.get('/detail', function (request, response) {
                 response.render('pages/detail', {
                     product: productInfo,
                     productDetails: productDetail
-                })
+                });
             });
         });
+});
+
+//get mini shopping cart html
+app.get('/miniCart', function (request, response) {
+    var miniCart = request.cookies.chZodiacShoppingCart;
+
+    if (typeof (miniCart) == "undefined") {
+        response.render('pages/noData', {
+            layout: false
+        });
+    } else {
+        var miniCartJson = JSON.parse(miniCart);
+        if (miniCartJson.length == 0) {
+            response.render('pages/noData', {
+                layout: false
+            });
+        } else {
+            response.render('pages/shoppingCart', {
+                items: miniCartJson,
+                layout: false
+            });
+        }
+    }
+
 });
 
 app.get('/cool', function (request, response) {

@@ -46,8 +46,11 @@
     margin-bottom: 3vw;
 }
 
-.div-width-95 h3{
+.div-width-95 h3 {
     margin-left: 1vw;
 }
 
-.productItem span {}
+.moreItems {
+    font-size: 20px;
+}
+

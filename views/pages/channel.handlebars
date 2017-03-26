@@ -1,0 +1,11 @@
+{{#section 'csslink'}}
+<link href="/css/channel.css" rel="stylesheet"> {{/section}}
+<div class="container-fluid">
+    <div class="row div-width-95">
+        <h3>{{title}}</h3>
+        {{#each products}} {{> products this}} {{/each}}
+    </div>
+</div>
+<input type="hidden" value="{{category}}" id="category"/>
+{{#section 'javascript'}} 
+<script src="/js/channel.js"></script>{{/section}}

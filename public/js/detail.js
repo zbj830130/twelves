@@ -1,15 +1,21 @@
 $(function () {
 
+    var category = $("#category").val();
+
     $("#leftNavbar li").each(function (index) {
         if (index == 0) {
             $(this).removeClass("active");
         }
 
-        if (index == 1 || index == 2) {
-            $(this).hide();
+        if (category == 1 && index == 1) {
+            $(this).addClass("active");
         }
-    })
 
+        if (category == 2 && index == 2) {
+            $(this).addClass("active");
+        }
+    });
+    
     $("#minusQty").addClass("disabled");
 
     $("#minusQty").click(function () {
@@ -31,15 +37,20 @@ function addToCart() {
     var qty = getCurPageQty();
     var name = $("#productName").text();
     var picurl = $("#picUrl").val();
+    var color = $("#color").val();
 
     var cartData = getShoppingCartCookie();
     var isContent = false;
+
+    var totalCount = 0;
 
     $.each(cartData, function (index, content) {
         if (content.sku == sku) {
             content.qty = qty;
             isContent = true;
         }
+
+        totalCount += content.qty;
     });
 
     if (isContent == false) {
@@ -49,34 +60,48 @@ function addToCart() {
         item['size'] = size;
         item['name'] = name;
         item['picurl'] = picurl;
+        item['color'] = color;
         cartData.push(item);
+
+        totalCount += qty;
     }
 
-    $.cookie('chZodiacShoppingCart', JSON.stringify(cartData), {
+    $.cookie(shoppingCartCookieName, JSON.stringify(cartData), {
         expires: 7,
         path: '/'
     });
+
+    $("#miniCartAmount").text(totalCount);
 }
 
 function minusQty() {
-    if (getCurPageQty() > 1) {
+    var qty = getCurPageQty();
+
+    if (qty > minQtyForEachProduct) {
         $("#minusQty").removeClass("disabled");
         $("#plusQty").removeClass("disabled");
 
-        $("#qty").text(getCurPageQty() - 1);
+        qty--;
+        $("#qty").text(qty);
+        if (qty == 1) {
+            $("#minusQty").addClass("disabled");
+        }
     } else {
         $("#minusQty").addClass("disabled");
     }
 }
 
 function plusQty() {
-    if (getCurPageQty() < 10) {
+    var qty = getCurPageQty();
+
+    if (qty < maxQtyForEachProduct) {
         $("#minusQty").removeClass("disabled");
         $("#plusQty").removeClass("disabled");
 
-        $("#qty").text(getCurPageQty() + 1);
+        qty++;
+        $("#qty").text(qty);
 
-        if (getCurPageQty() >= 10) {
+        if (qty >= maxQtyForEachProduct) {
             $("#plusQty").addClass("disabled");
         }
     } else {
@@ -86,8 +111,4 @@ function plusQty() {
 
 function getCurPageQty() {
     return parseInt($("#qty").text());
-}
-
-function getShoppingCartCookie() {
-    return jQuery.parseJSON($.cookie('chZodiacShoppingCart'));
 }
