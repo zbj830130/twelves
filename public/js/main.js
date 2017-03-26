@@ -25,7 +25,15 @@ $(function () {
             });
     });
 
+    $("#userLogout").click(function () {
+        $("#loginButton").show();
+        $("#loginUserName").text("");
+        $("#userLogout").text("");
+        $.cookie(userLoginCookieName, "");
+    });
+
     getMiniCartItemAmount();
+    getUsernameCookie();
 
 });
 
@@ -36,6 +44,23 @@ function getShoppingCartCookie() {
     } else {
         return jQuery.parseJSON(sCartInfo);
     }
+}
+
+function getUsernameCookie() {
+    var userlogin = $.cookie(userLoginCookieName);
+    if (typeof (userlogin) == "undefined" || userlogin.length == 0) {
+        $("#loginButton").show();
+        $("#loginUserName").text("");
+        $("#userLogout").text("");
+        $.cookie(userLoginCookieName, "");
+        return
+    } else {
+        var loginUserInfo = jQuery.parseJSON(userlogin);
+        $("#loginButton").hide();
+        $("#loginUserName").text(loginUserInfo.username);
+        $("#userLogout").text("Logout");
+    }
+
 }
 
 function getMiniCartItemAmount() {

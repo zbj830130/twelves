@@ -6,7 +6,8 @@
     <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/shoppingCart.css" rel="stylesheet">{{{_sections.csslink}}}
+    <link href="/css/shoppingCart.css" rel="stylesheet">
+    <link href="/css/loginAndSignup.css" rel="stylesheet">{{{_sections.csslink}}}
 </head>
 
 <body>
@@ -29,13 +30,16 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="btn btn-small" href="#">Login</a>
+                        <a id="loginUserName" class="btn btn-small" href="javascript:void(0);"></a>
                     </li>
                     <li>
-                        <a class="btn btn-small" href="#about">Signup</a>
+                        <a id="userLogout" class="btn btn-small" href="javascript:void(0);">Logout</a>
                     </li>
                     <li>
-                        <a id="miniCartBtn" class="btn btn-small" href="#" data-toggle="modal" data-target="#miniCartDiv">
+                        <a id="loginButton" class="btn btn-small" href="javascript:void(0);" data-toggle="modal" data-target="#loginAndSignupDiv">Login | Signup</a>
+                    </li>
+                    <li>
+                        <a id="miniCartBtn" class="btn btn-small" href="javascript:void(0);" data-toggle="modal" data-target="#miniCartDiv">
                             <i class="glyphicon glyphicon-shopping-cart"></i>(<span id="miniCartAmount">0</span>)
                         </a>
                     </li>
@@ -54,6 +58,76 @@
                 <div class="modal-footer top-no-border">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Confirm Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="loginAndSignupDiv" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10000;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a class="close" data-dismiss="modal" herf="javascript:vodi(0);"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-0">
+                            <div class="panel panel-login">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <a href="#" class="active" id="login-form-link">Login</a>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <a href="#" id="register-form-link">Signup</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form id="login_form" role="form" style="display: block;">
+                                                <div class="form-group">
+                                                    <input type="text" name="log_username" id="log_username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                                    <span></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" name="log_password" id="log_password" tabindex="2" class="form-control" placeholder="Password">
+                                                    <span></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-sm-offset-3">
+                                                            <input type="button" name="login_submit" id="login_submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form id="register_form" role="form" style="display: none;">
+                                                <div class="form-group">
+                                                    <input type="text" name="reg_username" id="reg_username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                                    <span></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" name="reg_password" id="reg_password" tabindex="2" class="form-control" placeholder="Password">
+                                                    <span></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" name="reg_confirm_password" id="reg_confirm_password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                                    <span></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-sm-offset-3">
+                                                            <input type="button" name="register_submit" id="register_submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -148,6 +222,7 @@
 <script src="/js/main.js"></script>
 <script src="/js/shoppingCart.js"></script>
 <script src="/js/jquery.cookie.js"></script>
+<script src="/js/loginAndSignup.js"></script>
 {{{_sections.javascript}}}
 
 </html>

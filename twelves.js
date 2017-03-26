@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 
 var Product = require('./models/product.js');
 var ProductDetail = require('./models/productDetail.js');
+var UserInfo = require('./models/userModel.js');
 
 var app = express();
 var handlebars = require('express3-handlebars')
@@ -111,6 +112,98 @@ app.get('/miniCart', function (request, response) {
         }
     }
 
+});
+
+app.get("/regist", function (request, response) {
+    var uName = request.query.reg_username;
+    var pwd = request.query.reg_password;
+    var cPwd = request.query.reg_confirm_password;
+    var isContinue = true;
+
+    reg = /^[a-zA-Z]\w{5,15}$/;
+    if (!reg.test(uName)) {
+        isContinue = false;
+    }
+
+    if (!reg.test(pwd)) {
+        isContinue = false;
+    }
+
+    if (pwd !== cPwd) {
+        isContinue = false;
+    }
+
+    if (isContinue == true) {
+        UserInfo.count({
+            username: uName
+        }, function (err, total) {
+            if (total > 0) {
+                response.send(false);
+            } else {
+                var userInfo = new UserInfo({
+                    username: uName,
+                    password: pwd,
+                    level: 1,
+                    createdate: new Date()
+                });
+
+                userInfo.save(function (err, res) {
+                    var item = {};
+                    item['id'] = userInfo.get("_id");
+                    item['username'] = uName;
+
+                    response.cookie('userlogin', JSON.stringify(item));
+                    response.send(true);
+                });
+            }
+        });
+    }
+});
+
+app.get("/login", function (request, response) {
+    var uName = request.query.log_username;
+    var pwd = request.query.log_password;
+    var isContinue = true;
+
+    reg = /^[a-zA-Z]\w{5,15}$/;
+    if (!reg.test(uName)) {
+        isContinue = false;
+    }
+
+    if (!reg.test(pwd)) {
+        isContinue = false;
+    }
+
+    if (isContinue == true) {
+        UserInfo.findOne({
+            username: uName,
+            password: pwd
+        }, function (err, docs) {
+            if (docs.id) {
+                var item = {};
+                item['id'] = docs.id;
+                item['username'] = uName;
+
+                response.cookie('userlogin', JSON.stringify(item));
+                response.send(true);
+            } else {
+                response.send(false);
+            }
+        });
+    }
+});
+
+app.get("/isUsernameExisted", function (request, response) {
+    var username = request.query.username;
+    UserInfo.count({
+        username: username
+    }, function (err, total) {
+        if (total > 0) {
+            response.send(true);
+        } else {
+            response.send(false);
+        }
+    });
 });
 
 app.get('/cool', function (request, response) {
