@@ -94,13 +94,13 @@ app.get('/miniCart', function (request, response) {
     var miniCart = request.cookies.chZodiacShoppingCart;
 
     if (typeof (miniCart) == "undefined") {
-        response.render('pages/noData', {
+        response.render('pages/shoppingCartEmpty', {
             layout: false
         });
     } else {
         var miniCartJson = JSON.parse(miniCart);
         if (miniCartJson.length == 0) {
-            response.render('pages/noData', {
+            response.render('pages/shoppingCartEmpty', {
                 layout: false
             });
         } else {
