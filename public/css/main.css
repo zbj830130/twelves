@@ -155,3 +155,8 @@ body {
 :root .gradient {
     filter: none;
 }
+
+.noData {
+    text-align: center;
+    font-size: 2vw;
+}

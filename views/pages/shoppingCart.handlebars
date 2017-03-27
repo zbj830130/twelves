@@ -1,26 +1,20 @@
-<!--
-<ol class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="#">2013</a></li>
-    <li class="active">十一月</li>
-</ol>
--->
 {{#each items}}
-<div class="div-width-95 bottom-color-gray">
+<div id="minisCart_item_{{sku}}" class="div-width-95 bottom-color-gray">
     <a href="/detail?SPU={{SPU}}"><img class="item-img" src="{{picurl}}" /></a>
     <ul class="proudctText">
         <li>{{name}}</li>
         <li>{{color}}/{{size}}</li>
+        <li>$ {{price}}</li>
     </ul>
     <div class="productQty">
         <a class="btn" id="minus_{{sku}}" herf="javascript:vodi(0);" onclick="miniCartMinusQty('{{sku}}')">
             <i class="fa fa-minus-square fa-2x" aria-hidden="true"></i>
         </a>
-        <label id="qty_{{sku}}">{{qty}}</label>
+        <label class="miniCartQty" id="qty_{{sku}}">{{qty}}</label>
         <a class="btn" id="plus_{{sku}}" herf="javascript:vodi(0);" onclick="miniCartPlusQty('{{sku}}')">
             <i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
         </a>
-        <a class="deleItem" herf="javascript:vodi(0);">
+        <a class="deleItem" herf="javascript:vodi(0);" onclick="miniCartDeleItem('{{sku}}')">
             <i class="fa fa-times fa-2x" aria-hidden="true"></i>
         </a>
     </div>

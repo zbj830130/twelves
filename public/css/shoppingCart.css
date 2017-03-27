@@ -22,6 +22,10 @@
     margin-top: 2px;
 }
 
+.miniCartQty{
+    width: 1vw;
+}
+
 .deleItem {
     margin-left: 10px;
     vertical-align: middle;

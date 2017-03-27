@@ -1,14 +1,6 @@
 {{#section 'csslink'}}
 <link href="/css/detail.css" rel="stylesheet">
 <link href="/css/bootstrap-select.min.css" rel="stylesheet">{{/section}}
-
-<!--
-<ol class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="#">2013</a></li>
-    <li class="active">十一月</li>
-</ol>
--->
 <div class="contain-fluid">
     {{#each product}}
     <div class="div-width-95 big-pic">
@@ -23,7 +15,8 @@
     <input type="hidden" id="picUrl" value="{{picUrl}}" />
     <input type="hidden" id="category" value="{{category}}" />
     <input type="hidden" id="spu" value="{{SPU}}" />
-    <input type="hidden" id="color" value="{{Color}}" />{{/each}}
+    <input type="hidden" id="color" value="{{Color}}" />
+    <input type="hidden" id="price" value="{{price}}" />{{/each}}
     <div class="div-width-80 opertaions">
         <div class="size">
             <label>Size:</label>

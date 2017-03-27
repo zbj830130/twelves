@@ -38,6 +38,7 @@ function addToCart() {
     var name = $("#productName").text();
     var picurl = $("#picUrl").val();
     var color = $("#color").val();
+    var price = $("#price").val();
 
     var cartData = getShoppingCartCookie();
     var isContent = false;
@@ -61,6 +62,7 @@ function addToCart() {
         item['name'] = name;
         item['picurl'] = picurl;
         item['color'] = color;
+        item['price'] = price;
         cartData.push(item);
 
         totalCount += qty;
@@ -72,6 +74,7 @@ function addToCart() {
     });
 
     $("#miniCartAmount").text(totalCount);
+    alert("Add to Cart succeed");
 }
 
 function minusQty() {

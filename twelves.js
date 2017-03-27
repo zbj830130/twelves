@@ -114,6 +114,30 @@ app.get('/miniCart', function (request, response) {
 
 });
 
+app.get('/ShoppingCart', function (request, response) {
+    var shoppingCart = request.cookies.chZodiacShoppingCart;
+
+    if (typeof (shoppingCart) == "undefined") {
+        response.render('pages/shoppingCartEmpty', {});
+    } else {
+        var shoppingCartInfp = JSON.parse(shoppingCart);
+        if (shoppingCartInfp.length == 0) {
+            response.render('pages/shoppingCartEmpty', {});
+        } else {
+            var totalPrice = 0;
+            shoppingCartInfp.forEach(function (item) {
+                totalPrice += (item.price * item.qty);
+            });
+
+            response.render('pages/shoppingIndex', {
+                items: shoppingCartInfp,
+                totalPrice: totalPrice.toFixed(2),
+                layout: 'shopping'
+            });
+        }
+    }
+});
+
 app.get("/regist", function (request, response) {
     var uName = request.query.reg_username;
     var pwd = request.query.reg_password;

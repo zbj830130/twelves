@@ -38,30 +38,10 @@
                     <li>
                         <a id="loginButton" class="btn btn-small" href="javascript:void(0);" data-toggle="modal" data-target="#loginAndSignupDiv">Login | Signup</a>
                     </li>
-                    <li>
-                        <a id="miniCartBtn" class="btn btn-small" href="javascript:void(0);" data-toggle="modal" data-target="#miniCartDiv">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>(<span id="miniCartAmount">0</span>)
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="modal fade" id="miniCartDiv" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10000;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bottom-no-border">
-                    <a class="deleItem close" data-dismiss="modal" herf="javascript:vodi(0);"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>
-                </div>
-                <div id="miniCartDivBody" class="modal-body">
-                </div>
-                <div class="modal-footer top-no-border">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a class="btn btn-primary" href="/ShoppingCart">Confirm Order</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="loginAndSignupDiv" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10000;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -220,7 +200,6 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/webSetting.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/shoppingCart.js"></script>
 <script src="/js/jquery.cookie.js"></script>
 <script src="/js/loginAndSignup.js"></script>
 {{{_sections.javascript}}}

@@ -1,0 +1,42 @@
+{{#section 'csslink'}}
+<link href="/css/shoppingIndex.css" rel="stylesheet">{{/section}}
+<div id="shoppingBody">{{#each items}}
+    <div id="shopping_item_{{sku}}" class="div-width-80 bottom-color-gray">
+        <a href="/detail?SPU={{SPU}}">
+            <img class="sIndexItemPic" src="{{picurl}}" />
+        </a>
+        <ul class="sIndexText">
+            <li>{{name}}</li>
+            <li>{{color}}/{{size}}</li>
+            <li>$ {{price}}</li>
+        </ul>
+        <div class="sIndexQty">
+            <a class="btn" id="sIndex_Minus_{{sku}}" herf="javascript:vodi(0);" onclick="sCartMinusQty('{{sku}}')">
+                <i class="fa fa-minus-square fa-3x" aria-hidden="true"></i>
+            </a>
+            <label id="sIndex_Qty_{{sku}}">{{qty}}</label>
+            <a class="btn" id="sIndex_Plus_{{sku}}" herf="javascript:vodi(0);" onclick="sCartPlusQty('{{sku}}')">
+                <i class="fa fa-plus-square fa-3x" aria-hidden="true"></i>
+            </a>
+
+        </div>
+        <div class="sIndexRemoveItem">
+            <button class="button btn-danger" onclick="sCartDeleItem('{{sku}}')">Remove
+        </button>
+        </div>
+        <input type="hidden" value="{{sku}}">
+    </div>
+    {{/each}}
+</div>
+<div class="shoppingFooter div-width-80">
+    <div class="totalPrice">
+        <span>Total: $</span><span id="sIndexTotalPrice">{{totalPrice}}</span>
+    </div>
+    <div class="operation">
+        <a class="btn btn-success btn-lg" href="/ShoppingCart">Confirm Order</a>
+    </div>
+</div>
+
+{{#section 'javascript'}}
+<script src="/js/shoppingIndex.js"></script>
+{{/section}}

@@ -22,6 +22,7 @@ function miniCartMinusQty(sku) {
         $("#plus_" + sku).removeClass("disabled");
     } else {
         $("#minus_" + sku).removeClass("disabled");
+        $("#plus_" + sku).removeClass("disabled");
     }
 
     updatecartData(qty, sku);
@@ -39,9 +40,38 @@ function miniCartPlusQty(sku) {
         $("#minus_" + sku).removeClass("disabled");
     } else {
         $("#plus_" + sku).removeClass("disabled");
+        $("#minus_" + sku).removeClass("disabled");
     }
 
     updatecartData(qty, sku);
+
+}
+
+function miniCartDeleItem(sku) {
+    var cartData = getShoppingCartCookie();
+    var newCartData = jQuery.parseJSON('[]');
+    var totalCount = 0;
+    var totalPrice = 0;
+
+    $.each(cartData, function (index, content) {
+        if (content.sku !== sku) {
+            newCartData.push(content);
+            totalCount += content.qty;
+            totalPrice += content.qty * content.price;
+        }
+    });
+
+    $.cookie(shoppingCartCookieName, JSON.stringify(newCartData), {
+        expires: 7,
+        path: '/'
+    });
+
+    $("#minisCart_item_" + sku).remove();
+    $("#miniCartAmount").text(totalCount);
+    if ($("#miniCartDivBody").children().length == 0) {
+        $("#miniCartDivBody").html("<div class=\"div-width-95 noData\">You have no items in shopping cart.</div>");
+        $("#shoppingFooter").remove();
+    }
 
 }
 
