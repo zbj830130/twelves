@@ -1,0 +1,26 @@
+{{#section 'csslink'}}
+<link href="/css/shoppingConfirm.css" rel="stylesheet">{{/section}}
+<div class="shoppingConfirm div-width-95">
+    <div>
+        <div class="title">Shipping Addresses</div>
+        <div id="addressListDiv" class="row addressList div-width-95">
+        </div>
+    </div>
+
+    <div id="delivery">
+        <div class="title">Delivery Type</div>
+        <div class="div-width-95 deliveryList">
+            <label><input type="radio" name="deliveryType" value=1/> Express</label>
+        </div>
+    </div>
+    <div id="payment">
+        <div class="title">Payment</div>
+        <div class="div-width-95 paymentList">
+            <label><input type="radio" name="paymentType" value=1/> Pay on cash</label>
+        </div>
+    </div>
+</div>
+<div id="productList" class="div-width-95"></div>
+{{#section 'javascript'}}
+<script src="/js/shoppingConfirm.js"></script>
+{{/section}}

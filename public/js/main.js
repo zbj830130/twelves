@@ -60,7 +60,6 @@ function getUsernameCookie() {
         $("#loginUserName").text(loginUserInfo.username);
         $("#userLogout").text("Logout");
     }
-
 }
 
 function getMiniCartItemAmount() {

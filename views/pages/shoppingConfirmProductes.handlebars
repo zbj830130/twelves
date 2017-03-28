@@ -1,0 +1,23 @@
+{{#each items}}
+<div id="shopping_item_{{sku}}" class="div-width-95 bottom-color-gray productItem">
+    <a href="/detail?SPU={{SPU}}">
+        <img class="sConfirmImg" src="{{picurl}}" />
+    </a>
+    <ul class="sConfirmText">
+        <li>{{name}}</li>
+        <li>{{color}}/{{size}}</li>
+        <li>$ {{price}}</li>
+    </ul>
+    <div class="sConfirmQty">
+        <label id="sIndex_Qty_{{sku}}">Quantity:{{qty}}</label>
+    </div>
+</div>
+<input type="hidden" value="{{sku}}"> {{/each}}
+<div class="sConfirmFooter div-width-80">
+    <div class="totalPrice">
+        <span>Total: $</span><span id="sIndexTotalPrice">{{totalPrice}}</span>
+    </div>
+    <div class="operation">
+        <a class="btn btn-danger btn-lg" href="/shoppingConfirm">Submit Order</a>
+    </div>
+</div>

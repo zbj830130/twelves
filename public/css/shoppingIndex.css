@@ -30,7 +30,7 @@
     color: black;
 }
 
-.sIndexRemoveItem{
+.sIndexRemoveItem {
     display: inline-block;
     margin-left: 5vw;
 }
@@ -39,11 +39,12 @@
 .operation,
 .removeItem {
     display: inline-block;
-    
 }
 
 .totalPrice {
     width: 68%;
+    font-size: 2vw;
+    font-weight: bold;
 }
 
 .operation {
@@ -55,3 +56,9 @@
     height: 100%;
     color: black;
 }
+
+.sIndexFooter {
+    margin-top: 2vw;
+}
+
+.sIndexTotalPrice {}

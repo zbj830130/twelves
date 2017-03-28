@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise;
 var Product = require('./models/product.js');
 var ProductDetail = require('./models/productDetail.js');
 var UserInfo = require('./models/userModel.js');
+var AddressInfo = require('./models/addressModel.js');
 
 var app = express();
 var handlebars = require('express3-handlebars')
@@ -136,6 +137,62 @@ app.get('/ShoppingCart', function (request, response) {
             });
         }
     }
+});
+
+app.get('/shoppingConfirm', function (request, response) {
+    response.render('pages/shoppingConfirm', {
+        layout: 'shopping'
+    });
+});
+
+app.get('/shoppingConfirmProductes', function (request, response) {
+    var shoppingCart = request.cookies.chZodiacShoppingCart;
+
+    if (typeof (shoppingCart) == "undefined") {
+        response.render('pages/shoppingCartEmpty', {});
+    } else {
+        var shoppingCartInfp = JSON.parse(shoppingCart);
+        if (shoppingCartInfp.length == 0) {
+            response.render('pages/shoppingCartEmpty', {});
+        } else {
+            var totalPrice = 0;
+            shoppingCartInfp.forEach(function (item) {
+                totalPrice += (item.price * item.qty);
+            });
+
+            response.render('pages/shoppingConfirmProductes', {
+                items: shoppingCartInfp,
+                totalPrice: totalPrice.toFixed(2),
+                layout: false
+            });
+        }
+    }
+});
+
+app.get('/addAddress', function (request, response) {
+    var addressInfo = new AddressInfo({
+        reveivername: request.query.rname,
+        mobile: request.query.mobileNo,
+        address: request.query.address,
+        userId: request.query.userId,
+        createdate: new Date()
+    });
+
+    addressInfo.save(function (err, res) {
+        response.send(true);
+    });
+});
+
+app.get('/queryAddress', function (request, response) {
+    var userId = request.query.userId;
+    AddressInfo.find({
+        userId: userId
+    }, function (err, docs) {
+        response.render('pages/addresssList', {
+            addresses: docs,
+            layout: false
+        });
+    });
 });
 
 app.get("/regist", function (request, response) {

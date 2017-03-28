@@ -1,0 +1,102 @@
+.shoppingConfirm,
+#productList {
+    border: 1px solid #b3b3b3;
+    box-shadow: 0 0 5px #a2a2a2;
+}
+
+.shoppingConfirm {
+    margin-top: 5vw;
+}
+
+#productList {
+    margin-top: 2vw;
+}
+
+.title {
+    background-color: #eeeeee;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+}
+
+.addressList,
+.deliveryList,
+.paymentList{
+    margin-top: 1vw;
+}
+
+.addressItem {
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
+    border: 1px solid #b3b3b3;
+    margin-bottom: 1vw;
+    max-height: 10vw;
+    min-height: 10vw;
+}
+
+.addressItem span {
+    word-break: normal;
+    width: 90%;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1vw;
+}
+
+.addressItem span:first-child {
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.productItem{
+    margin-bottom: 3vw;
+}
+
+.sConfirmImg{
+    width: 20%;
+    height: auto;
+}
+
+.sConfirmText {
+    display: inline-block;
+    list-style: none;
+    padding-left: 1px;
+    vertical-align: middle;
+    text-align: center;
+    width: 30%;
+    font-size: 1.5vw;
+}
+
+.sConfirmQty {
+    display: inline-block;
+    font-size: 1.5vw;
+    margin-left: 10vw;
+}
+
+.totalPrice {
+    width: 68%;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.totalPrice,
+.operation{
+    display: inline-block;
+}
+
+.operation {
+    width: 30%;
+    text-align: right;
+}
+
+.removeItem {
+    height: 100%;
+    color: black;
+}
+
+.sConfirmFooter {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
