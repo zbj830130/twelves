@@ -6,6 +6,7 @@ var Product = require('./models/product.js');
 var ProductDetail = require('./models/productDetail.js');
 var UserInfo = require('./models/userModel.js');
 var AddressInfo = require('./models/addressModel.js');
+var OrderInfo = require('./models/orderModel.js');
 
 var app = express();
 var handlebars = require('express3-handlebars')
@@ -171,10 +172,10 @@ app.get('/shoppingConfirmProductes', function (request, response) {
 
 app.get('/addAddress', function (request, response) {
     var addressInfo = new AddressInfo({
-        reveivername: request.query.rname,
-        mobile: request.query.mobileNo,
-        address: request.query.address,
-        userId: request.query.userId,
+        reveivername: request.query.address_name,
+        mobile: request.query.address_mobile,
+        address: request.query.address_address,
+        userId: request.query.address_userId,
         createdate: new Date()
     });
 
@@ -194,6 +195,34 @@ app.get('/queryAddress', function (request, response) {
         });
     });
 });
+
+app.get('/saveOrder', function (request, response) {
+    var userId = request.query.userId;
+    var addressId = request.query.addressId;
+    var shoppingCart = request.cookies.chZodiacShoppingCart;
+    var shoppingCartInfo = JSON.parse(shoppingCart);
+
+    AddressInfo.find({
+        _id: addressId
+    }, function (err, docs) {
+        var orderInfo = new OrderInfo({
+            userId: userId,
+            address: docs,
+            Details: shoppingCartInfo,
+            createdate: new Date()
+        });
+
+        console.log(orderInfo);
+
+                orderInfo.save(function (err, docs) {
+//                    response.cookie('chZodiacShoppingCart', '[]');
+                    response.render('pages/OrderFinished', {
+                        OrderNumber: orderInfo.get("_id"),
+                        layout: 'shopping'
+                    });
+                });
+    });
+})
 
 app.get("/regist", function (request, response) {
     var uName = request.query.reg_username;

@@ -5,18 +5,54 @@
         <div class="title">Shipping Addresses</div>
         <div id="addressListDiv" class="row addressList div-width-95">
         </div>
+        <div class="div-width-95">
+            <input id="currentAddress" type="hidden" />
+            <button class="addNewAddress btn btn-success" data-toggle="modal" data-target="#addressOperation">Add New Address</button>
+        </div>
+        <div class="modal fade" id="addressOperation" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10000;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bottom-no-border">
+                        <a class="deleItem close" data-dismiss="modal" herf="javascript:vodi(0);"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="modal-body div-width-95" style="border:1px solid #b2b2b2;margin-bottom:1vw;border-radius:5px;">
+                        <form id="new_address_form" role="form">
+                            <div class="form-group">
+                                <input type="text" name="address_name" id="address_name" tabindex="1" class="form-control" placeholder="Name" value="">
+                                <span></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="address_mobile" id="address_mobile" tabindex="2" class="form-control" placeholder="Mobile">
+                                <span></span>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="address_address" id="address_address" tabindex="2" class="form-control" placeholder="Address" style="resize: none;"></textarea>
+                                <span></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <input type="button" name="address_submit" id="address_submit" tabindex="4" class="form-control btn btn-register" value="Create">
+                                    </div>
+                                </div>
+                            </div>
+                            <input id="address_userId" name="address_userId" type="hidden" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
     <div id="delivery">
         <div class="title">Delivery Type</div>
         <div class="div-width-95 deliveryList">
-            <label><input type="radio" name="deliveryType" value=1/> Express</label>
+            <label><input type="radio" name="deliveryType" value=1 checked/> Express</label>
         </div>
     </div>
     <div id="payment">
         <div class="title">Payment</div>
         <div class="div-width-95 paymentList">
-            <label><input type="radio" name="paymentType" value=1/> Pay on cash</label>
+            <label><input type="radio" name="paymentType" value=1 checked/> Pay on cash</label>
         </div>
     </div>
 </div>

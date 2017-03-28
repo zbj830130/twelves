@@ -15,13 +15,17 @@
 .title {
     background-color: #eeeeee;
     font-size: 1.5vw;
+    font-weight: bold;
     padding-left: 1vw;
+    height: 3vw;
+    padding-top: 0.5vw;
 }
 
 .addressList,
 .deliveryList,
-.paymentList{
+.paymentList {
     margin-top: 1vw;
+    margin-bottom: 1vw;
 }
 
 .addressItem {
@@ -32,6 +36,10 @@
     margin-bottom: 1vw;
     max-height: 10vw;
     min-height: 10vw;
+}
+
+.addressItemSelected{
+    border: 1px solid red;
 }
 
 .addressItem span {
@@ -50,11 +58,16 @@
     border-bottom: 1px solid #b3b3b3;
 }
 
-.productItem{
+.addNewAddress {
+    margin-left: 1.5vw;
+    margin-bottom: 1vw;
+}
+
+.productItem {
     margin-bottom: 3vw;
 }
 
-.sConfirmImg{
+.sConfirmImg {
     width: 20%;
     height: auto;
 }
@@ -82,7 +95,7 @@
 }
 
 .totalPrice,
-.operation{
+.operation {
     display: inline-block;
 }
 
