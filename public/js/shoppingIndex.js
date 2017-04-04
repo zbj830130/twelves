@@ -3,6 +3,11 @@ $(function () {
         sku = $(this).find("input").eq(0).val();
         sIndexInitEachItem(sku);
     });
+    
+    $("#shoppingIndexConfirmOrder").click(function(){
+        alert(123);
+        return false;
+    })
 });
 
 function sIndexInitEachItem(sku) {
