@@ -3,10 +3,13 @@ $(function () {
         sku = $(this).find("input").eq(0).val();
         sIndexInitEachItem(sku);
     });
-    
-    $("#shoppingIndexConfirmOrder").click(function(){
-        alert(123);
-        return false;
+
+    $("#shoppingIndexConfirmOrder").click(function () {
+        var userlogin = $.cookie(userLoginCookieName);
+        if (typeof (userlogin) == "undefined" || userlogin.length == 0) {
+            $("#loginButton").click();
+            return false;
+        }
     })
 });
 
